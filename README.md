@@ -10,8 +10,6 @@
 
 *Tour with fictional data: Today, CRM, Dashboard, a printable proposal, Invoices and Progress.*
 
-> **Language note:** the product was built for a Spanish-speaking market (Colombia, Mexico, Hispanic US), so the UI and code comments are in Spanish. This README and the code identifiers are the entry point for English readers.
-
 ---
 
 ## The problem
@@ -80,7 +78,7 @@ lib/
   juego.js           XP, daily goals and streaks derived from the CRM
 public/              vanilla JS SPA (one view per file)
 test/                10 test suites and their runner
-docs/MANUAL.md       full user manual (in Spanish)
+docs/MANUAL.md       full user manual
 ```
 
 ## Getting started
