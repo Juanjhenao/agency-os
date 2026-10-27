@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cuéntanos de tu negocio</title>
+<style>
+  :root {
+    --ink: #14201c;
+    --ink-2: #46564f;
+    --dim: #7b8b83;
+    --line: #dde3df;
+    --ground: #f4f6f4;
+    --surface: #ffffff;
+    --accent: #0f6e5c;
+    --accent-soft: #e4efeb;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 32px 20px 80px;
+  }
+  .wrap { max-width: 640px; margin: 0 auto; }
+
+  header { margin-bottom: 28px; }
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700; margin-bottom: 10px;
+  }
+  h1 { font-size: 30px; line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.02em; }
+  header p { color: var(--ink-2); margin: 0; max-width: 52ch; }
+
+  form {
+    background: var(--surface); border: 1px solid var(--line);
+    border-radius: 12px; padding: 28px;
+    display: flex; flex-direction: column; gap: 20px;
+  }
+  fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 20px; }
+  legend {
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--dim); font-weight: 700; padding: 0 0 4px;
+  }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  label { font-size: 13.5px; font-weight: 600; }
+  label .req { color: var(--accent); }
+  .hint { font-size: 12.5px; color: var(--dim); font-weight: 400; }
+  input, select, textarea {
+    font: inherit; font-size: 15px; color: var(--ink);
+    background: #fbfcfb; border: 1px solid var(--line); border-radius: 8px;
+    padding: 11px 12px; width: 100%;
+  }
+  textarea { resize: vertical; min-height: 96px; line-height: 1.55; }
+  input:focus, select:focus, textarea:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  button {
+    font: inherit; font-weight: 700; font-size: 16px;
+    background: var(--accent); color: #fff; border: 0;
+    border-radius: 9px; padding: 15px 20px; cursor: pointer;
+  }
+  button:hover { background: #0c5a4c; }
+  button:disabled { opacity: 0.55; cursor: default; }
+
+  .foot { font-size: 13px; color: var(--dim); text-align: center; margin-top: 6px; }
+  .error {
+    background: #fbeae7; border: 1px solid #f0c8c1; color: #96382a;
+    border-radius: 8px; padding: 12px 14px; font-size: 14px;
+  }
+  .error[hidden] { display: none; }
+
+  .done { text-align: center; padding: 44px 28px; }
+  .done .check {
+    width: 56px; height: 56px; border-radius: 50%; background: var(--accent-soft);
+    color: var(--accent); display: grid; place-items: center; margin: 0 auto 18px;
+    font-size: 28px; font-weight: 700;
+  }
+  .done h2 { font-size: 24px; margin: 0 0 10px; }
+  .done p { color: var(--ink-2); margin: 0 auto; max-width: 44ch; }
+  .steps { text-align: left; max-width: 400px; margin: 24px auto 0; padding-left: 20px; color: var(--ink-2); font-size: 15px; }
+  .steps li { margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div id="form-view">
+    <header>
+      <p class="eyebrow" id="brand">Agencia de IA</p>
+      <h1>Cuéntanos qué está frenando tu negocio</h1>
+      <p>
+        Cinco minutos ahora nos ahorran una reunión de descubrimiento a los dos. Con esto llegamos
+        a la primera llamada sabiendo de qué hablar — y sabiendo si de verdad te podemos ayudar.
+      </p>
+    </header>
+
+    <form id="apply">
+      <div class="error" id="error" hidden></div>
+
+      <fieldset>
+        <legend>Quién eres</legend>
+        <div class="row">
+          <div class="field">
+            <label for="name">Tu nombre <span class="req">*</span></label>
+            <input id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="company">Empresa <span class="req">*</span></label>
+            <input id="company" name="company" required autocomplete="organization">
+          </div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input id="email" name="email" type="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="phone">WhatsApp</label>
+            <input id="phone" name="phone" autocomplete="tel">
+          </div>
+        </div>
+        <div class="field">
+          <label for="website">Web o redes</label>
+          <input id="website" name="website" placeholder="instagram.com/tumarca">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tu negocio</legend>
+        <div class="field">
+          <label for="business">¿Qué vende tu negocio, en una línea?</label>
+          <input id="business" name="business" placeholder="Ej: suplementos naturales para mujeres que entrenan">
+        </div>
+        <div class="field">
+          <label for="problem">
+            ¿Cuál es el problema que quieres resolver? <span class="req">*</span>
+            <span class="hint">Entre más concreto, mejor te podemos responder. Escríbelo como se lo contarías a un socio.</span>
+          </label>
+          <textarea id="problem" name="problem" required></textarea>
+        </div>
+        <div class="field">
+          <label for="tried">¿Qué has intentado ya?</label>
+          <textarea id="tried" name="tried" style="min-height:72px"></textarea>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="team">Tamaño del equipo</label>
+            <select id="team" name="team">
+              <option value="solo">Solo yo</option>
+              <option value="2-10" selected>2 a 10 personas</option>
+              <option value="11-50">11 a 50</option>
+              <option value="mas-50">Más de 50</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="invests">¿Inviertes hoy en publicidad?</label>
+            <select id="invests" name="invests">
+              <option value="si">Sí, tengo campañas activas</option>
+              <option value="no" selected>No, todavía no</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Para saber si encajamos</legend>
+        <div class="row">
+          <div class="field">
+            <label for="budget">¿Cuánto puedes destinar al mes?</label>
+            <select id="budget" name="budget">
+              <option value="menos-1m">Menos de $1M COP</option>
+              <option value="1-2m">$1M a $2M</option>
+              <option value="2-5m" selected>$2M a $5M</option>
+              <option value="mas-5m">Más de $5M</option>
+              <option value="no-se">Todavía no lo sé</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="urgency">¿Cuándo quieres empezar?</label>
+            <select id="urgency" name="urgency">
+              <option value="ya">Ya, es urgente</option>
+              <option value="este-mes" selected>Este mes</option>
+              <option value="explorando">Estoy explorando</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="source">¿Cómo nos conociste?</label>
+          <input id="source" name="source" placeholder="Referido de…, Instagram, LinkedIn…">
+        </div>
+      </fieldset>
+
+      <button type="submit" id="submit">Enviar</button>
+      <p class="foot">Te respondemos en menos de 24 horas hábiles. Tus datos no se comparten con nadie.</p>
+    </form>
+  </div>
+
+  <div class="done" id="done" hidden>
+    <div class="check">✓</div>
+    <h2>Recibido</h2>
+    <p>Gracias por tomarte el tiempo de escribirlo bien. Te respondemos en menos de 24 horas hábiles.</p>
+    <ol class="steps">
+      <li>Leemos lo que nos contaste y revisamos tu negocio por fuera.</li>
+      <li>Te escribimos con una primera lectura y, si tiene sentido para los dos, te proponemos una llamada de 30 minutos.</li>
+      <li>En esa llamada salimos con un diagnóstico concreto: qué automatizar primero y qué esperar de eso.</li>
+    </ol>
+  </div>
+
+</div>
+
+<script>
+  // El nombre comercial sale de los ajustes, para que la página no diga algo distinto a las facturas.
+  fetch('/api/state')
+    .then((r) => r.json())
+    .then((s) => {
+      const n = s.settings && s.settings.company && s.settings.company.tradeName;
+      if (n) document.getElementById('brand').textContent = n;
+    })
+    .catch(() => {});
+
+  const form = document.getElementById('apply');
+  const errorBox = document.getElementById('error');
+
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const btn = document.getElementById('submit');
+    btn.disabled = true;
+    btn.textContent = 'Enviando…';
+    errorBox.hidden = true;
+
+    const data = {};
+    new FormData(form).forEach((v, k) => { data[k] = String(v).trim(); });
+
+    try {
+      const res = await fetch('/api/public/apply', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const e = await res.json().catch(() => ({}));
+        throw new Error(e.error || 'No se pudo enviar');
+      }
+      document.getElementById('form-view').hidden = true;
+      document.getElementById('done').hidden = false;
+      window.scrollTo(0, 0);
+    } catch (err) {
+      errorBox.textContent = err.message + '. Si sigue fallando, escríbenos directo.';
+      errorBox.hidden = false;
+      btn.disabled = false;
+      btn.textContent = 'Enviar';
+    }
+  });
+</script>
+</body>
+</html>

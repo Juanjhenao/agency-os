@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cyclone AI · Agency OS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-mark" id="brand-mark">C</div>
+      <div class="brand-text">
+        <strong id="brand-name">Cyclone AI</strong>
+        <span>sistema comercial</span>
+      </div>
+    </div>
+
+    <!-- Las cuatro puertas de arriba son el uso diario; el resto vive detrás de
+         "Todo lo demás". Antes eran 23 entradas al mismo nivel: un archivador,
+         no un sitio donde uno sabe qué hacer al entrar. -->
+    <nav class="nav" id="nav">
+      <button class="nav-item nav-hero" data-view="hoy"><span class="ni-ico">◆</span>Hoy<span class="ni-count" id="count-hoy"></span></button>
+      <button class="nav-item nav-hero" data-view="despacho"><span class="ni-ico">▷</span>Despacho<span class="ni-count" id="count-despacho"></span></button>
+      <button class="nav-item nav-hero" data-view="crm"><span class="ni-ico">◐</span>CRM<span class="ni-count" id="count-crm"></span></button>
+      <button class="nav-item nav-hero" data-view="progreso"><span class="ni-ico">✦</span>Progreso</button>
+
+      <button class="nav-mas" id="nav-mas" data-act="nav-toggle">
+        <span class="ni-ico">⋯</span>Todo lo demás<span class="nav-mas-chevron">›</span>
+      </button>
+
+      <div class="nav-resto" id="nav-resto" hidden>
+        <div class="nav-group">Dirigir</div>
+        <button class="nav-item" data-view="panel"><span class="ni-ico">◈</span>Panel</button>
+        <button class="nav-item" data-view="finanzas"><span class="ni-ico">▤</span>Finanzas</button>
+        <button class="nav-item" data-view="calculadora"><span class="ni-ico">▢</span>Calculadora</button>
+
+        <div class="nav-group">Vender</div>
+        <button class="nav-item" data-view="prospeccion"><span class="ni-ico">⌖</span>Prospección<span class="ni-count" id="count-prospeccion"></span></button>
+        <button class="nav-item" data-view="ruta"><span class="ni-ico">➤</span>Ruta<span class="ni-count" id="count-ruta"></span></button>
+        <button class="nav-item" data-view="diagnostico"><span class="ni-ico">◎</span>Diagnóstico</button>
+        <button class="nav-item" data-view="mensajes"><span class="ni-ico">✉</span>Mensajes</button>
+        <button class="nav-item" data-view="clientes"><span class="ni-ico">◍</span>Clientes<span class="ni-count" id="count-clientes"></span></button>
+        <button class="nav-item" data-view="servicios"><span class="ni-ico">◇</span>Servicios</button>
+        <button class="nav-item" data-view="propuestas"><span class="ni-ico">◫</span>Propuestas<span class="ni-count" id="count-propuestas"></span></button>
+
+        <div class="nav-group">Atraer</div>
+        <button class="nav-item" data-view="campanas"><span class="ni-ico">◈</span>Campañas<span class="ni-count" id="count-campanas"></span></button>
+        <button class="nav-item" data-view="tablero"><span class="ni-ico">◔</span>Tablero</button>
+
+        <div class="nav-group">Cobrar</div>
+        <button class="nav-item" data-view="contratos"><span class="ni-ico">✎</span>Contratos<span class="ni-count" id="count-contratos"></span></button>
+        <button class="nav-item" data-view="suscripciones"><span class="ni-ico">↻</span>Suscripciones<span class="ni-count" id="count-suscripciones"></span></button>
+        <button class="nav-item" data-view="facturas"><span class="ni-ico">▦</span>Facturas<span class="ni-count" id="count-facturas"></span></button>
+
+        <div class="nav-group">Entregar</div>
+        <button class="nav-item" data-view="onboarding"><span class="ni-ico">✓</span>Onboarding</button>
+        <button class="nav-item" data-view="produccion"><span class="ni-ico">◨</span>Producción<span class="ni-count" id="count-produccion"></span></button>
+        <button class="nav-item" data-view="briefs"><span class="ni-ico">✍</span>Briefs</button>
+        <button class="nav-item" data-view="reportes"><span class="ni-ico">▲</span>Reportes<span class="ni-count" id="count-reportes"></span></button>
+        <button class="nav-item" data-view="automatizaciones"><span class="ni-ico">⚡</span>Automatizaciones<span class="ni-count" id="count-automatizaciones"></span></button>
+        <button class="nav-item" data-view="guia"><span class="ni-ico">★</span>Guía</button>
+        <button class="nav-item" data-view="ajustes"><span class="ni-ico">⚙</span>Ajustes</button>
+      </div>
+    </nav>
+
+    <div class="sidebar-foot">
+      <div class="mrr-mini">
+        <span>MRR</span>
+        <strong id="mrr-mini-value">—</strong>
+      </div>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="view-title">Panel</h1>
+        <p id="view-sub"></p>
+      </div>
+      <div class="topbar-actions" id="topbar-actions"></div>
+    </header>
+    <div id="view" class="view"></div>
+  </main>
+
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop" hidden>
+  <div class="modal" id="modal">
+    <header class="modal-head">
+      <h2 id="modal-title"></h2>
+      <button class="icon-btn" data-act="modal-close">✕</button>
+    </header>
+    <div class="modal-body" id="modal-body"></div>
+    <footer class="modal-foot" id="modal-foot"></footer>
+  </div>
+</div>
+
+<canvas id="confetti-canvas" class="confetti-canvas"></canvas>
+
+<div class="toast-wrap" id="toast-wrap"></div>
+
+<div id="print-root" class="print-root"></div>
+
+<script src="core.js"></script>
+<script src="juego.js"></script>
+<script src="views-sales.js"></script>
+<script src="views-outbound.js"></script>
+<script src="views-billing.js"></script>
+<script src="views-calculadora.js"></script>
+<script src="views-production.js"></script>
+<script src="views-marketing.js"></script>
+<script src="views-automation.js"></script>
+<script src="views-journey.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
