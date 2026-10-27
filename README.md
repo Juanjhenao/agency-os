@@ -6,6 +6,10 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-vanilla_ES2022-F7DF1E?logo=javascript&logoColor=black)
 ![Tests](https://img.shields.io/badge/tests-10_suites_·_~425_verificaciones-2ea44f)
 
+![Recorrido por Agency OS con datos de ejemplo](docs/demo.gif)
+
+*Recorrido con datos ficticios: Hoy, CRM, Panel, una propuesta imprimible, Facturas y Progreso.*
+
 ---
 
 ## El problema
